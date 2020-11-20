@@ -1,0 +1,43 @@
+﻿@model List<SitemaUnicesumar.Models.LabViewModel>
+
+<div class="div-lab">
+    <h4 class="text-title">Laboratórios</h4>
+    @if (Model.Count > 0)
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="th-text" scope="col">Laboratório</th>
+                    <th class="th-text" scope="col">Sede</th>
+                    <th class="th-text" scope="col">Bloco</th>
+                    <th class="th-text" scope="col">Categoria</th>
+                    <th class="th-text" scope="col">Capacidade</th>
+                    <th class="th-text text-center" scope="col">Agendamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="td-text">@item.Name</td>
+                        <td class="td-text">@item.HeadOfficeTitle</td>
+                        <td class="td-text">@item.BlockTitle</td>
+                        <td class="td-text">@item.LaboratoryCategoryTitle</td>
+                        <td class="td-text">@item.LaboratoryCapacityTitle</td>
+                        <td class="text-center">
+                            <a class="btn-edit btn btn-schedule" data-toggle="modal" data-target="#modal-schedule" data-id="@item.Id">
+                                <img style="width:25px" src="~/Assets/Images/calendar-edit.svg" />
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="text-list">
+            <h5>Nenhum laboratório encontrado...</h5>
+        </div>
+    }
+</div>

@@ -1,0 +1,77 @@
+﻿@model SitemaUnicesumar.Models.LaboratoryReserveViewModel
+
+<div class="col-12 col-lg-12">
+
+    <div class="col-6 col-lg-6">
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Tipo de Reserva:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.TypeReserveDescription
+            </div>
+        </div>
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Laboratório:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.LaboratoryName
+            </div>
+        </div>
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Bloco:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.LaboratoryBlockName
+            </div>
+        </div>
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Disciplina:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.DisciplineTitle
+            </div>
+        </div>
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Turma:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.ClassTitle
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-lg-6">
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Turno:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.ShiftTitle
+            </div>
+        </div>
+        @if (Model.TypeReserveId == SitemaUnicesumar.Enum.ETypeReserve.Simple)
+        {
+            <div class="row form-row p-row">
+                <h5 class="font-weight-bold font-size-modal">Data da Reserva:</h5>
+                <div class="col-8 col-lg-8 font-size-modal">
+                    @Model.StrDate
+                </div>
+            </div>
+        }
+        else if (Model.TypeReserveId == SitemaUnicesumar.Enum.ETypeReserve.Recorrent)
+        {
+            <div class="row form-row p-row font-size-modal">
+                <h5 class="font-weight-bold font-size-modal">Data de Inicio:</h5>
+                <div class="col-8 col-lg-8 font-size-modal">
+                    @Model.StrDateStart
+                </div>
+            </div>
+            <div class="row form-row p-row">
+                <h5 class="font-weight-bold font-size-modal">Data Final:</h5>
+                <div class="col-8 col-lg-8 font-size-modal">
+                    @Model.StrDateEnd
+                </div>
+            </div>
+        }
+        <div class="row form-row p-row">
+            <h5 class="font-weight-bold font-size-modal">Turno:</h5>
+            <div class="col-8 col-lg-8 font-size-modal">
+                @Model.HoraryTitle
+            </div>
+        </div>
+    </div>
+
+</div>

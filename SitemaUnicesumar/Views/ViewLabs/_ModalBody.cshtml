@@ -1,0 +1,61 @@
+﻿@model SitemaUnicesumar.Models.LaboratoryReserveViewModel
+
+@{
+    var date = DateTime.Today.ToString("yyyy'-'MM'-'dd");
+}
+
+<div class="col-12 col-lg-12">
+    @Html.Hidden("LaboratoryId", Model.LaboratoryId)
+    <div class="col-6 col-lg-6">
+        <div class="row form-row">
+            @Html.LabelFor(model => model.TypeReserveId, new { @class = "col-4 col-lg-4 col-form-label" })
+            <div class="col-7 col-lg-7">
+                @Html.DropDownListFor(model => model.TypeReserveId, Model.ListTypeReserve, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row form-row">
+            @Html.LabelFor(model => model.ShiftId, new { @class = "col-4 col-lg-4 col-form-label" })
+            <div class="col-7 col-lg-7">
+                @Html.DropDownListFor(model => model.ShiftId, Model.ListShift, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row form-row">
+            @Html.LabelFor(model => model.ClassId, new { @class = "col-4 col-lg-4 col-form-label" })
+            <div class="col-7 col-lg-7">
+                @Html.DropDownListFor(model => model.ClassId, Model.ListClass, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row form-row">
+            @Html.LabelFor(model => model.DisciplineId, new { @class = "col-4 col-lg-4 col-form-label" })
+            <div class="col-7 col-lg-7">
+                @Html.DropDownListFor(model => model.DisciplineId, Model.ListDiscipline, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-6">
+        <div class="row form-row div-date" style="display:block">
+            @Html.LabelFor(model => model.Date, new { @class = "col-4 col-lg-4 col-form-label m-date" })
+            <div class="col-7 col-lg-7">
+                @Html.TextBox("Date", Model.Date, "{0:yyyy/MM/dd}", new { @class = "form-control", @type = "date", @value = date })
+            </div>
+        </div>
+        <div class="row form-row div-date-start" style="display:none">
+            @Html.LabelFor(model => model.DateStart, new { @class = "col-4 col-lg-4 col-form-label m-date" })
+            <div class="col-7 col-lg-7">
+                @Html.TextBox("DateStart", Model.DateStart, "{0:yyyy/MM/dd}", new { @class = "form-control", @type = "date" })
+            </div>
+        </div>
+        <div class="row form-row div-date-end" style="display:none">
+            @Html.LabelFor(model => model.DateEnd, new { @class = "col-4 col-lg-4 col-form-label m-date" })
+            <div class="col-7 col-lg-7">
+                @Html.TextBox("DateEnd", Model.DateEnd, "{0:yyyy/MM/dd}", new { @class = "form-control", @type = "date" })
+            </div>
+        </div>
+        <div class="row form-row">
+            @Html.LabelFor(model => model.HoraryId, new { @class = "col-4 col-lg-4 col-form-label" })
+            <div class="col-7 col-lg-7">
+                @Html.DropDownListFor(model => model.HoraryId, Model.ListHorary, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>

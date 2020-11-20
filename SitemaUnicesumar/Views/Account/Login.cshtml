@@ -1,0 +1,31 @@
+﻿@model SitemaUnicesumar.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <form class="form-signin">
+                @if (!string.IsNullOrEmpty(Model.ErrorMenssage))
+                {
+                    <span id="error-menssage">@Model.ErrorMenssage</span>
+                }
+                @Html.ValidationMessageFor(p => p.UserName)
+                @Html.TextBoxFor(p => p.UserName, new { @class = "form-control mb-2", @placeholder = "Nome", @type = "text" })
+                @Html.ValidationMessageFor(p => p.Password)
+                @Html.TextBoxFor(p => p.Password, new { @class = "form-control", @placeholder = "Senha", @type = "password" })
+                <button class="mt-3 btn btn-lg btn-primary btn-block btn-signin" type="submit" value="Login">Entrar</button>
+            </form>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

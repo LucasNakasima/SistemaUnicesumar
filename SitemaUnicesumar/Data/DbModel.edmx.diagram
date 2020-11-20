@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b75146ac2f84dbdb308a6883247c864" Name="Diagram1">
+        <EntityTypeShape EntityType="UnicesumarBDModel.Block" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.Class" Width="1.5" PointX="3.375" PointY="3.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.Discipline" Width="1.5" PointX="3.625" PointY="5.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.HeadOffice" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.Laboratory" Width="1.5" PointX="3" PointY="1.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.LaboratoryCapacity" Width="1.5" PointX="1" PointY="4.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.LaboratoryCategory" Width="1.5" PointX="1.375" PointY="5.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.LaboratoryReserve" Width="1.5" PointX="5.625" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.Shift" Width="1.5" PointX="6.125" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.User" Width="1.5" PointX="5.625" PointY="4.75" IsExpanded="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_Laboratory_Block" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_LaboratoryReserve_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_LaboratoryReserve_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_Laboratory_HeadOffice" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_Laboratory_LaboratoryCapacity" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_Laboratory_LaboratoryCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_LaboratoryReserve_Laboratory" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_LaboratoryReserve_Shift" ManuallyRouted="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_LaboratoryReserve_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UnicesumarBDModel.Horary" Width="1.5" PointX="2.875" PointY="4.125" IsExpanded="false" />
+        <AssociationConnector Association="UnicesumarBDModel.FK_LaboratoryReserve_Horary" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

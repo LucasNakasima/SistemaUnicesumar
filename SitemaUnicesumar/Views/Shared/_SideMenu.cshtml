@@ -1,0 +1,25 @@
+﻿@{
+    var pageKey = ViewBag.PageKey;
+}
+
+@using SitemaUnicesumar.Helpers
+
+<div class="side-menu">
+    <ul class="pl-0 pt-menu">
+        <li class="@LayoutHelper.ActivePageMenu(pageKey, "Home") mb-li-menu">
+            <a href="@Url.Action("Index","Home")">
+                <h3 class="text-menu @LayoutHelper.ActivePageMenuText(pageKey, "Home")">Inicio</h3>
+            </a>
+        </li>
+        <li class="@LayoutHelper.ActivePageMenu(pageKey, "ViewLabs")  mb-li-menu">
+            <a href="@Url.Action("Index","ViewLabs")">
+                <h3 class="text-menu @LayoutHelper.ActivePageMenuText(pageKey, "ViewLabs")">Laboratórios</h3>
+            </a>
+        </li>
+        <li class="@LayoutHelper.ActivePageMenu(pageKey, "MyReservations")  mb-li-menu">
+            <a href="@Url.Action("Index","MyReservations")">
+                <h3 class="text-menu @LayoutHelper.ActivePageMenuText(pageKey, "MyReservations")">Minhas Reservas</h3>
+            </a>
+        </li>
+    </ul>
+</div>

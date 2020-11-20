@@ -1,0 +1,443 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-color: #ececec;
+}
+
+.card-container.card {
+    width: 350px;
+    padding: 40px 40px;
+    height: 350px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*
+ * Card component
+ */
+.card {
+    background-color: #fff;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 28px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn-signin {
+    /*background-color: #4d90fe; */
+    background-color: #337ab7;
+    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+    .btn-signin:hover,
+    .btn-signin:active,
+    .btn-signin:focus {
+        background-color: #1b4a73;
+    }
+
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+    .forgot-password:hover,
+    .forgot-password:active,
+    .forgot-password:focus {
+        color: rgb(12, 97, 33);
+    }
+
+.text-white {
+    color: #fff !important;
+}
+
+.m-item-header {
+    margin: 11px;
+    margin-top: 14px;
+    margin-left: 40px;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.dropdown-menu-right:hover {
+    background-color: #20659F;
+}
+
+.dropdown-menu-right {
+    right: 0 !important;
+    left: auto !important;
+    text-align: center;
+    padding: 8px !important;
+    top: 85%;
+    margin: 0px !important;
+    min-width: 84px !important;
+    font-size: 15px !important;
+}
+
+.m-icon-header {
+    margin: 11px;
+    margin-top: 4px;
+    margin-left: 40px;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.pl-0 {
+    padding-left: 0px !important;
+}
+
+.pr-0 {
+    padding-right: 0px !important;
+}
+
+.ml-0 {
+    margin-left: 0px !important;
+}
+
+.mr-0 {
+    margin-right: 0px !important;
+}
+
+.position-icon-user {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+}
+
+.side-menu {
+    background-color: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.20);
+    position: fixed;
+    width: 20%;
+    height: 100vh;
+}
+
+.text-menu {
+    color: #627182;
+    font-size: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 20px;
+}
+
+    .text-menu:hover {
+        background-color: #20659F;
+        color: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,.5) !important;
+    }
+
+.active-menu {
+    background-color: #20659F;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.5) !important;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 0px;
+}
+
+.pt-menu {
+    padding-top: 25px;
+}
+
+.m-container-header {
+    margin-left: 25px !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.logo-style {
+    margin-top: 70px;
+    opacity: 0.2;
+    width: 600px;
+}
+
+.mb-li-menu {
+    margin-bottom: 4px;
+}
+
+.card {
+    padding: 25px 45px;
+    background-color: #fff;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.20);
+    border-radius: 10px;
+}
+
+.pr-5 {
+    padding-right: 5rem;
+}
+
+.pt-5 {
+    padding-top: 4rem;
+}
+
+.p-card {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+.mt-card {
+    margin-top: -1.6rem;
+}
+
+.th-text {
+    font-size: 15px;
+}
+
+.card-filter {
+    padding: 12px 22px;
+    background-color: #fff;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.20);
+    border-radius: 10px;
+    height: 140px;
+}
+
+.mt-5 {
+    margin-top: 4rem;
+}
+
+.mt-3 {
+    margin-top: 2rem;
+}
+
+.mt-4 {
+    margin-top: 3rem;
+}
+
+.text-title {
+    color: #20659F;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 19px;
+}
+
+.p-dropdown-item {
+    padding: 12px;
+}
+
+.p-form-filter {
+    padding-right: 0px;
+}
+
+.btn-submit {
+    margin-top: 22px;
+    padding-left: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+#UserName-error, #Password-error, #error-menssage {
+    color: red;
+}
+
+.text-list {
+    display: flex;
+    justify-content: center;
+    margin: 25%;
+}
+
+.animate-position {
+    position: absolute;
+    top: 14%;
+    right: 24%;
+}
+
+.td-text {
+    padding-top: 1.5rem !important;
+}
+
+.btn-edit, .btn {
+    cursor: pointer;
+}
+
+.title-modal {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.btn-padding {
+    padding-left: 2.3rem;
+    padding-right: 2.3rem;
+}
+
+.btn-secondary:hover {
+    background-color: #b9b9b9;
+}
+
+.modal-body {
+    height: 278px !important;
+    padding: 25px !important;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    padding: 12px
+}
+
+.m-date {
+    margin-top: 4px !important;
+}
+
+.animate-position-modal {
+    position: absolute;
+    top: 10%;
+    right: 34%;
+}
+
+.p-row {
+    padding: 9px !important;
+}
+
+.font-size-modal {
+    font-size: 15px;
+}
+
+.modal-body-cancel {
+    height: 188px !important;
+    padding: 25px !important;
+    display:flex;
+    align-items:center;
+}
+
+.navbar-style {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+    height: 56px;
+    background-color: #20659F;
+}
+
+.modal-details {
+    height:320px !important;
+}

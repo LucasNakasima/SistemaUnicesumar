@@ -1,0 +1,106 @@
+﻿@model SitemaUnicesumar.Models.LaboratoryViewModel
+
+@{
+    ViewBag.Title = "Laboratórios";
+    var animateLoad = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
+    var date = DateTime.Today.ToString("yyyy'-'MM'-'dd");
+}
+
+<div>
+    <div class="card-filter mt-5">
+        <div class="div-filter">
+            <h4 class="text-title p-form-filter">Filtros</h4>
+            <div class="row">
+                <div class="form-group col-lg-2 p-form-filter">
+                    <label for="HeadOfficeId">Sede</label>
+                    <select id="HeadOfficeId" class="form-control">
+                        @foreach (var item in Model.ListHeadOffice)
+                        {
+                            if (item.Id == 1)
+                            {
+                                <option selected value="@item.Id">@item.Title</option>
+
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Title</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 p-form-filter">
+                    <label for="BlockId">Bloco</label>
+                    <select id="BlockId" class="form-control">
+                        <option selected value="0">Nenhum</option>
+                        @foreach (var item in Model.ListBlock)
+                        {
+                            <option value="@item.Id">@item.Title</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 p-form-filter">
+                    <label for="LaboratoryCategoryId">Categoria</label>
+                    <select id="LaboratoryCategoryId" class="form-control">
+                        <option selected value="0">Nenhum</option>
+                        @foreach (var item in Model.ListLaboratoryCategory)
+                        {
+                            <option value="@item.Id">@item.Title</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 p-form-filter">
+                    <label for="LaboratoryCapacityId">Capacidade</label>
+                    <select id="LaboratoryCapacityId" class="form-control">
+                        <option selected value="0">Nenhum</option>
+                        @foreach (var item in Model.ListLaboratoryCapacity)
+                        {
+                            <option value="@item.Id">@item.Title</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 p-form-filter">
+                    <label for="DateReserve" class="col-2 col-form-label">Data Desejada</label>
+                    <div class="col-10">
+                        <input class="form-control" type="date" value="@date" id="DateReserve">
+                    </div>
+                </div>
+                <div class="form-group col-lg-2 p-form-filter d-flex justify-content-center">
+                    <button type="submit" id="btn-filter" class="btn btn-primary btn-submit">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="laboratoryView" class="card mt-3">
+        @Html.Partial("_ListLabs", Model.ListLab)
+    </div>
+    <div id="load-animate" class="animate-position" style="display:none">
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_OnXSmN.json" background="transparent" speed="0.8" style="width: 600px; height: 400px;" loop autoplay> </lottie-player>
+    </div>
+</div>
+
+@using (Html.BeginForm("ReserveLab", "Viewlabs", FormMethod.Post))
+{
+    <div class="modal fade" id="modal-schedule" tabindex="-1" role="dialog" aria-labelledby="modal-schedule">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title title-modal">Reserva de Laboratório</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="load-modal" class="animate-position-modal" style="display:none">
+                        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_OnXSmN.json" background="transparent" speed="0.8" style="width: 300px; height: 200px;" loop autoplay> </lottie-player>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-padding btn-close" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary btn-padding">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script src="~/Scripts/Pages/view-labs.js"></script>
+    <script src="@animateLoad"></script>
+}

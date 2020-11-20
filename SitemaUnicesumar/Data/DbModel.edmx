@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UnicesumarBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Block">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HeadOffice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Horary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Laboratory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="HeadOfficeId" Type="int" Nullable="false" />
+          <Property Name="BlockId" Type="int" Nullable="false" />
+          <Property Name="LaboratoryCategoryId" Type="int" Nullable="false" />
+          <Property Name="LaboratoryCapacityId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaboratoryCapacity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaboratoryCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaboratoryReserve">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LaboratoryId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TypeReserveId" Type="int" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="ShiftId" Type="int" Nullable="false" />
+          <Property Name="DisciplineId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="DateStart" Type="datetime" />
+          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="HoraryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Laboratory_Block">
+          <End Role="Block" Type="Self.Block" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Block">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="BlockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratory_HeadOffice">
+          <End Role="HeadOffice" Type="Self.HeadOffice" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeadOffice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="HeadOfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratory_LaboratoryCapacity">
+          <End Role="LaboratoryCapacity" Type="Self.LaboratoryCapacity" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaboratoryCapacity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="LaboratoryCapacityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratory_LaboratoryCategory">
+          <End Role="LaboratoryCategory" Type="Self.LaboratoryCategory" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaboratoryCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="LaboratoryCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Discipline">
+          <End Role="Discipline" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Horary">
+          <End Role="Horary" Type="Self.Horary" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="HoraryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Laboratory">
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="LaboratoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Shift">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnicesumarBDModelStoreContainer">
+          <EntitySet Name="Block" EntityType="Self.Block" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discipline" EntityType="Self.Discipline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeadOffice" EntityType="Self.HeadOffice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horary" EntityType="Self.Horary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Laboratory" EntityType="Self.Laboratory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaboratoryCapacity" EntityType="Self.LaboratoryCapacity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaboratoryCategory" EntityType="Self.LaboratoryCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaboratoryReserve" EntityType="Self.LaboratoryReserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shift" EntityType="Self.Shift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Laboratory_Block" Association="Self.FK_Laboratory_Block">
+            <End Role="Block" EntitySet="Block" />
+            <End Role="Laboratory" EntitySet="Laboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratory_HeadOffice" Association="Self.FK_Laboratory_HeadOffice">
+            <End Role="HeadOffice" EntitySet="HeadOffice" />
+            <End Role="Laboratory" EntitySet="Laboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratory_LaboratoryCapacity" Association="Self.FK_Laboratory_LaboratoryCapacity">
+            <End Role="LaboratoryCapacity" EntitySet="LaboratoryCapacity" />
+            <End Role="Laboratory" EntitySet="Laboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratory_LaboratoryCategory" Association="Self.FK_Laboratory_LaboratoryCategory">
+            <End Role="LaboratoryCategory" EntitySet="LaboratoryCategory" />
+            <End Role="Laboratory" EntitySet="Laboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Class" Association="Self.FK_LaboratoryReserve_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="LaboratoryReserve" EntitySet="LaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Discipline" Association="Self.FK_LaboratoryReserve_Discipline">
+            <End Role="Discipline" EntitySet="Discipline" />
+            <End Role="LaboratoryReserve" EntitySet="LaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Horary" Association="Self.FK_LaboratoryReserve_Horary">
+            <End Role="Horary" EntitySet="Horary" />
+            <End Role="LaboratoryReserve" EntitySet="LaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Laboratory" Association="Self.FK_LaboratoryReserve_Laboratory">
+            <End Role="Laboratory" EntitySet="Laboratory" />
+            <End Role="LaboratoryReserve" EntitySet="LaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Shift" Association="Self.FK_LaboratoryReserve_Shift">
+            <End Role="Shift" EntitySet="Shift" />
+            <End Role="LaboratoryReserve" EntitySet="LaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_User" Association="Self.FK_LaboratoryReserve_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LaboratoryReserve" EntitySet="LaboratoryReserve" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnicesumarBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Block">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Laboratory" Relationship="Self.FK_Laboratory_Block" FromRole="Block" ToRole="Laboratory" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LaboratoryReserve" Relationship="Self.FK_LaboratoryReserve_Class" FromRole="Class" ToRole="LaboratoryReserve" />
+        </EntityType>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LaboratoryReserve" Relationship="Self.FK_LaboratoryReserve_Discipline" FromRole="Discipline" ToRole="LaboratoryReserve" />
+        </EntityType>
+        <EntityType Name="HeadOffice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Laboratory" Relationship="Self.FK_Laboratory_HeadOffice" FromRole="HeadOffice" ToRole="Laboratory" />
+        </EntityType>
+        <EntityType Name="Laboratory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HeadOfficeId" Type="Int32" Nullable="false" />
+          <Property Name="BlockId" Type="Int32" Nullable="false" />
+          <Property Name="LaboratoryCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="LaboratoryCapacityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Block" Relationship="Self.FK_Laboratory_Block" FromRole="Laboratory" ToRole="Block" />
+          <NavigationProperty Name="HeadOffice" Relationship="Self.FK_Laboratory_HeadOffice" FromRole="Laboratory" ToRole="HeadOffice" />
+          <NavigationProperty Name="LaboratoryCapacity" Relationship="Self.FK_Laboratory_LaboratoryCapacity" FromRole="Laboratory" ToRole="LaboratoryCapacity" />
+          <NavigationProperty Name="LaboratoryCategory" Relationship="Self.FK_Laboratory_LaboratoryCategory" FromRole="Laboratory" ToRole="LaboratoryCategory" />
+          <NavigationProperty Name="LaboratoryReserve" Relationship="Self.FK_LaboratoryReserve_Laboratory" FromRole="Laboratory" ToRole="LaboratoryReserve" />
+        </EntityType>
+        <EntityType Name="LaboratoryCapacity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Laboratory" Relationship="Self.FK_Laboratory_LaboratoryCapacity" FromRole="LaboratoryCapacity" ToRole="Laboratory" />
+        </EntityType>
+        <EntityType Name="LaboratoryCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Laboratory" Relationship="Self.FK_Laboratory_LaboratoryCategory" FromRole="LaboratoryCategory" ToRole="Laboratory" />
+        </EntityType>
+        <EntityType Name="LaboratoryReserve">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LaboratoryId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TypeReserveId" Type="UnicesumarBDModel.ETypeReserve" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="ShiftId" Type="Int32" Nullable="false" />
+          <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="DateStart" Type="DateTime" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_LaboratoryReserve_Class" FromRole="LaboratoryReserve" ToRole="Class" />
+          <NavigationProperty Name="Discipline" Relationship="Self.FK_LaboratoryReserve_Discipline" FromRole="LaboratoryReserve" ToRole="Discipline" />
+          <NavigationProperty Name="Laboratory" Relationship="Self.FK_LaboratoryReserve_Laboratory" FromRole="LaboratoryReserve" ToRole="Laboratory" />
+          <NavigationProperty Name="Shift" Relationship="Self.FK_LaboratoryReserve_Shift" FromRole="LaboratoryReserve" ToRole="Shift" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LaboratoryReserve_User" FromRole="LaboratoryReserve" ToRole="User" />
+          <Property Name="HoraryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Horary" Relationship="UnicesumarBDModel.FK_LaboratoryReserve_Horary" FromRole="LaboratoryReserve" ToRole="Horary" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LaboratoryReserve" Relationship="Self.FK_LaboratoryReserve_Shift" FromRole="Shift" ToRole="LaboratoryReserve" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LaboratoryReserve" Relationship="Self.FK_LaboratoryReserve_User" FromRole="User" ToRole="LaboratoryReserve" />
+        </EntityType>
+        <Association Name="FK_Laboratory_Block">
+          <End Role="Block" Type="Self.Block" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Block">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="BlockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Discipline">
+          <End Role="Discipline" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="DisciplineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratory_HeadOffice">
+          <End Role="HeadOffice" Type="Self.HeadOffice" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeadOffice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="HeadOfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratory_LaboratoryCapacity">
+          <End Role="LaboratoryCapacity" Type="Self.LaboratoryCapacity" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaboratoryCapacity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="LaboratoryCapacityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Laboratory_LaboratoryCategory">
+          <End Role="LaboratoryCategory" Type="Self.LaboratoryCategory" Multiplicity="1" />
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaboratoryCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Laboratory">
+              <PropertyRef Name="LaboratoryCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Laboratory">
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="LaboratoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_Shift">
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shift">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaboratoryReserve_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LaboratoryReserve" Type="Self.LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnicesumarBdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ListBlock" EntityType="Self.Block" />
+          <EntitySet Name="ListClass" EntityType="Self.Class" />
+          <EntitySet Name="ListDiscipline" EntityType="Self.Discipline" />
+          <EntitySet Name="ListHeadOffice" EntityType="Self.HeadOffice" />
+          <EntitySet Name="ListLaboratory" EntityType="Self.Laboratory" />
+          <EntitySet Name="ListLaboratoryCapacity" EntityType="Self.LaboratoryCapacity" />
+          <EntitySet Name="ListLaboratoryCategory" EntityType="Self.LaboratoryCategory" />
+          <EntitySet Name="ListLaboratoryReserve" EntityType="Self.LaboratoryReserve" />
+          <EntitySet Name="ListShift" EntityType="Self.Shift" />
+          <EntitySet Name="ListUser" EntityType="Self.User" />
+          <AssociationSet Name="FK_Laboratory_Block" Association="Self.FK_Laboratory_Block">
+            <End Role="Block" EntitySet="ListBlock" />
+            <End Role="Laboratory" EntitySet="ListLaboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Class" Association="Self.FK_LaboratoryReserve_Class">
+            <End Role="Class" EntitySet="ListClass" />
+            <End Role="LaboratoryReserve" EntitySet="ListLaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Discipline" Association="Self.FK_LaboratoryReserve_Discipline">
+            <End Role="Discipline" EntitySet="ListDiscipline" />
+            <End Role="LaboratoryReserve" EntitySet="ListLaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratory_HeadOffice" Association="Self.FK_Laboratory_HeadOffice">
+            <End Role="HeadOffice" EntitySet="ListHeadOffice" />
+            <End Role="Laboratory" EntitySet="ListLaboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratory_LaboratoryCapacity" Association="Self.FK_Laboratory_LaboratoryCapacity">
+            <End Role="LaboratoryCapacity" EntitySet="ListLaboratoryCapacity" />
+            <End Role="Laboratory" EntitySet="ListLaboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Laboratory_LaboratoryCategory" Association="Self.FK_Laboratory_LaboratoryCategory">
+            <End Role="LaboratoryCategory" EntitySet="ListLaboratoryCategory" />
+            <End Role="Laboratory" EntitySet="ListLaboratory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Laboratory" Association="Self.FK_LaboratoryReserve_Laboratory">
+            <End Role="Laboratory" EntitySet="ListLaboratory" />
+            <End Role="LaboratoryReserve" EntitySet="ListLaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_Shift" Association="Self.FK_LaboratoryReserve_Shift">
+            <End Role="Shift" EntitySet="ListShift" />
+            <End Role="LaboratoryReserve" EntitySet="ListLaboratoryReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaboratoryReserve_User" Association="Self.FK_LaboratoryReserve_User">
+            <End Role="User" EntitySet="ListUser" />
+            <End Role="LaboratoryReserve" EntitySet="ListLaboratoryReserve" />
+          </AssociationSet>
+          <EntitySet Name="ListHorary" EntityType="UnicesumarBDModel.Horary" />
+          <AssociationSet Name="FK_LaboratoryReserve_Horary" Association="UnicesumarBDModel.FK_LaboratoryReserve_Horary">
+            <End Role="Horary" EntitySet="ListHorary" />
+            <End Role="LaboratoryReserve" EntitySet="ListLaboratoryReserve" />
+          </AssociationSet>
+        </EntityContainer>
+        <EnumType Name="ETypeReserve" a:ExternalTypeName="SitemaUnicesumar.Enum.ETypeReserve" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EntityType Name="Horary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LaboratoryReserve" Relationship="UnicesumarBDModel.FK_LaboratoryReserve_Horary" FromRole="Horary" ToRole="LaboratoryReserve" />
+        </EntityType>
+        <Association Name="FK_LaboratoryReserve_Horary">
+          <End Type="UnicesumarBDModel.Horary" Role="Horary" Multiplicity="1" />
+          <End Type="UnicesumarBDModel.LaboratoryReserve" Role="LaboratoryReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LaboratoryReserve">
+              <PropertyRef Name="HoraryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnicesumarBDModelStoreContainer" CdmEntityContainer="UnicesumarBdEntities">
+          <EntitySetMapping Name="ListBlock">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.Block">
+              <MappingFragment StoreEntitySet="Block">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListClass">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListDiscipline">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.Discipline">
+              <MappingFragment StoreEntitySet="Discipline">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListHeadOffice">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.HeadOffice">
+              <MappingFragment StoreEntitySet="HeadOffice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListLaboratory">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.Laboratory">
+              <MappingFragment StoreEntitySet="Laboratory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HeadOfficeId" ColumnName="HeadOfficeId" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="LaboratoryCategoryId" ColumnName="LaboratoryCategoryId" />
+                <ScalarProperty Name="LaboratoryCapacityId" ColumnName="LaboratoryCapacityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListLaboratoryCapacity">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.LaboratoryCapacity">
+              <MappingFragment StoreEntitySet="LaboratoryCapacity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListLaboratoryCategory">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.LaboratoryCategory">
+              <MappingFragment StoreEntitySet="LaboratoryCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListLaboratoryReserve">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.LaboratoryReserve">
+              <MappingFragment StoreEntitySet="LaboratoryReserve">
+                <ScalarProperty Name="HoraryId" ColumnName="HoraryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LaboratoryId" ColumnName="LaboratoryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TypeReserveId" ColumnName="TypeReserveId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListShift">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.Shift">
+              <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListUser">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListHorary">
+            <EntityTypeMapping TypeName="UnicesumarBDModel.Horary">
+              <MappingFragment StoreEntitySet="Horary">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

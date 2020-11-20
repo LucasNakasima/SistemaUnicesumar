@@ -1,0 +1,60 @@
+﻿@{
+    var sideMenu = ViewBag.SideMenu == null ? true : false;
+    var logoutMenu = ViewBag.LogoutMenu == null ? true : false;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Unicesumar</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-fixed-top navbar-style">
+        <div class="container-fluid bar-">
+            <div class="navbar-header">
+                <h3 class="text-white m-item-header font-weight-bold">Unicesumar</h3>
+            </div>
+            @if (logoutMenu)
+            {
+                <div class="dropdown position-icon-user">
+                    <a class="btn dropdown-toggle m-icon-header" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="~/Assets/Images/icon-user.svg" style="width:33px" alt="icon" />
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item p-dropdown-item" href="@Url.Action("Logout","Account")">Sair</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container-fluid pl-0">
+        @if (sideMenu)
+        {
+            <div class="row">
+                <div class="col-12 col-lg-3 pr-5">
+                    @Html.Partial("_SideMenu")
+                </div>
+                <div class="col-12 col-lg-9 pl-0 pr-5 mt-card">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-12 col-lg-12 pl-0 pl-md-5">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
